@@ -108,6 +108,22 @@ export default function Home() {
           </p>
         </a>
       </div>
+
+      <div> 
+        <p>theme toggle</p>
+      </div>
+
+      <div> 
+        <p>main title</p>
+      </div>
+
+      <div> 
+        <p>description</p>
+      </div>
+
+      <div> 
+        <p>socials</p>
+      </div>
     </main>
   )
 }
