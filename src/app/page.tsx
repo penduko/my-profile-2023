@@ -1,6 +1,7 @@
 'use client'
-import { Menu } from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
+import { Fragment } from 'react'
 
 export default function Home() {
   return (
@@ -111,51 +112,101 @@ export default function Home() {
         </a>
       </div>
 
-      <div className='w-full'>
+      <div className='max-w-5xl w-full'>
 
-
-
-        <Menu as='div' className='float-right'>
-          <Menu.Button>
-
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
-            </svg>
-
-
-          </Menu.Button>
-          <Menu.Items className="absolute mt-2 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <Menu.Item>
-              <button className='group flex w-full items-center px-2 py-2 text-sm'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mr-2 w-6 h-6">
-                  <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-                </svg>
-
-
-                Light
-              </button>
-            </Menu.Item>
-            <Menu.Item>
-              <button className='group flex w-full items-center px-2 py-2 text-sm'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mr-2 w-6 h-6">
+        <div className="text-right">
+          <Menu as="div" className="relative inline-block text-left">
+            <div>
+              <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                   <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
                 </svg>
+              </Menu.Button>
+            </div>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 mt-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div className="px-1 py-1 ">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <EditActiveIcon
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <EditInactiveIcon
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Light
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <DuplicateActiveIcon
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <DuplicateInactiveIcon
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Dark
+                      </button>
+                    )}
+                  </Menu.Item>
+                </div>
+                <div className="px-1 py-1">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <ArchiveActiveIcon
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <ArchiveInactiveIcon
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        )}
+                        System
+                      </button>
+                    )}
+                  </Menu.Item>
+                
+                </div>
+              
+              </Menu.Items>
+            </Transition>
+          </Menu>
+        </div>
 
-                Dark
-              </button>
-            </Menu.Item>
-
-            <Menu.Item>
-              <button className='group flex w-full items-center px-2 py-2 text-sm'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mr-2 w-6 h-6">
-                  <path fill-rule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z" clip-rule="evenodd" />
-                </svg>
-
-                System
-              </button>
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
       </div>
 
       <div>
@@ -171,4 +222,228 @@ export default function Home() {
       </div>
     </main>
   )
+
+
+
+  function EditInactiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 13V16H7L16 7L13 4L4 13Z"
+          fill="#EDE9FE"
+          stroke="#A78BFA"
+          strokeWidth="2"
+        />
+      </svg>
+    )
+  }
+
+  function EditActiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 13V16H7L16 7L13 4L4 13Z"
+          fill="#8B5CF6"
+          stroke="#C4B5FD"
+          strokeWidth="2"
+        />
+      </svg>
+    )
+  }
+
+  function DuplicateInactiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 4H12V12H4V4Z"
+          fill="#EDE9FE"
+          stroke="#A78BFA"
+          strokeWidth="2"
+        />
+        <path
+          d="M8 8H16V16H8V8Z"
+          fill="#EDE9FE"
+          stroke="#A78BFA"
+          strokeWidth="2"
+        />
+      </svg>
+    )
+  }
+
+  function DuplicateActiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 4H12V12H4V4Z"
+          fill="#8B5CF6"
+          stroke="#C4B5FD"
+          strokeWidth="2"
+        />
+        <path
+          d="M8 8H16V16H8V8Z"
+          fill="#8B5CF6"
+          stroke="#C4B5FD"
+          strokeWidth="2"
+        />
+      </svg>
+    )
+  }
+
+  function ArchiveInactiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="5"
+          y="8"
+          width="10"
+          height="8"
+          fill="#EDE9FE"
+          stroke="#A78BFA"
+          strokeWidth="2"
+        />
+        <rect
+          x="4"
+          y="4"
+          width="12"
+          height="4"
+          fill="#EDE9FE"
+          stroke="#A78BFA"
+          strokeWidth="2"
+        />
+        <path d="M8 12H12" stroke="#A78BFA" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  function ArchiveActiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="5"
+          y="8"
+          width="10"
+          height="8"
+          fill="#8B5CF6"
+          stroke="#C4B5FD"
+          strokeWidth="2"
+        />
+        <rect
+          x="4"
+          y="4"
+          width="12"
+          height="4"
+          fill="#8B5CF6"
+          stroke="#C4B5FD"
+          strokeWidth="2"
+        />
+        <path d="M8 12H12" stroke="#A78BFA" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  function MoveInactiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M10 4H16V10" stroke="#A78BFA" strokeWidth="2" />
+        <path d="M16 4L8 12" stroke="#A78BFA" strokeWidth="2" />
+        <path d="M8 6H4V16H14V12" stroke="#A78BFA" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  function MoveActiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M10 4H16V10" stroke="#C4B5FD" strokeWidth="2" />
+        <path d="M16 4L8 12" stroke="#C4B5FD" strokeWidth="2" />
+        <path d="M8 6H4V16H14V12" stroke="#C4B5FD" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  function DeleteInactiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="5"
+          y="6"
+          width="10"
+          height="10"
+          fill="#EDE9FE"
+          stroke="#A78BFA"
+          strokeWidth="2"
+        />
+        <path d="M3 6H17" stroke="#A78BFA" strokeWidth="2" />
+        <path d="M8 6V4H12V6" stroke="#A78BFA" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  function DeleteActiveIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="5"
+          y="6"
+          width="10"
+          height="10"
+          fill="#8B5CF6"
+          stroke="#C4B5FD"
+          strokeWidth="2"
+        />
+        <path d="M3 6H17" stroke="#C4B5FD" strokeWidth="2" />
+        <path d="M8 6V4H12V6" stroke="#C4B5FD" strokeWidth="2" />
+      </svg>
+    )
+  }
 }
