@@ -3,8 +3,10 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 export default function Home() {
+  
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white dark:bg-black">
 
       {/* navigation  */}
       <div className='max-w-5xl w-full'>
@@ -31,7 +33,7 @@ export default function Home() {
                 <div className="px-1 py-1 ">
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <button onClick={() => handleLightTheme()}
                         className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
@@ -52,7 +54,7 @@ export default function Home() {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <button onClick={() => handleDarkTheme()}
                         className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
@@ -368,5 +370,15 @@ export default function Home() {
         <path d="M8 6V4H12V6" stroke="#C4B5FD" strokeWidth="2" />
       </svg>
     )
+  }
+
+  function handleLightTheme() {
+
+    document.documentElement.classList.remove('dark')
+  }
+
+  function handleDarkTheme() {
+
+    document.documentElement.classList.add('dark')
   }
 }
