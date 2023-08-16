@@ -5,7 +5,7 @@ import { Fragment, useEffect } from 'react'
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white dark:bg-black  transition-property: background-color, duration-500 ease-in delay-100">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-stone-300 dark:bg-stone-900 transition-property: background-color, duration-500 ease-in delay-100">
 
       {/* navigation  */}
       <div className='max-w-5xl w-full'>
@@ -13,7 +13,7 @@ export default function Home() {
         <div className="text-right">
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+              <Menu.Button className="inline-flex w-full justify-center rounded-md bg-stone-200 dark:bg-stone-950 px-4 py-2 text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                   <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
                 </svg>
@@ -28,12 +28,12 @@ export default function Home() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute right-0 mt-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute right-0 mt-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-stone-200 dark:bg-stone-950 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="px-1 py-1 ">
                   <Menu.Item>
                     {({ active }) => (
                       <button onClick={() => handleLightTheme()}
-                        className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        className={`${active ? 'bg-violet-500 text-white' : 'text-stone-700 dark:text-stone-300'
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         {active ? (
@@ -54,7 +54,7 @@ export default function Home() {
                   <Menu.Item>
                     {({ active }) => (
                       <button onClick={() => handleDarkTheme()}
-                        className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        className={`${active ? 'bg-violet-500 text-white' : 'text-stone-700 dark:text-stone-300'
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         {active ? (
@@ -77,7 +77,7 @@ export default function Home() {
                   <Menu.Item>
                     {({ active }) => (
                       <button onClick={() => handleSystemTheme()}
-                        className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        className={`${active ? 'bg-violet-500 text-white' : 'text-stone-700 dark:text-stone-300'
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         {active ? (
