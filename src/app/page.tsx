@@ -1,9 +1,8 @@
 'use client'
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 
 export default function Home() {
-  
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white dark:bg-black">
@@ -77,7 +76,7 @@ export default function Home() {
                 <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <button onClick={() => handleSystemTheme()}
                         className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
@@ -373,12 +372,25 @@ export default function Home() {
   }
 
   function handleLightTheme() {
+    // @todo this to custom hook
 
-    document.documentElement.classList.remove('dark')
+    // localStorage.theme = 'light'
+    // document.documentElement.classList.remove('dark')
   }
 
   function handleDarkTheme() {
 
-    document.documentElement.classList.add('dark')
+    // localStorage.theme = 'dark'
+    // document.documentElement.classList.add('dark')
+  }
+
+  function handleSystemTheme() {
+
+    // localStorage.removeItem('theme')
+    // if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //   document.documentElement.classList.add('dark')
+    // } else {
+    //   document.documentElement.classList.remove('dark')
+    // }
   }
 }
