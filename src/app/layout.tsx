@@ -1,8 +1,6 @@
-import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Script from 'next/script'
-import { useEffect } from 'react'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',

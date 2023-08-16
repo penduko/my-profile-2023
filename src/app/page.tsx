@@ -5,7 +5,7 @@ import { Fragment, useEffect } from 'react'
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white dark:bg-black">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white dark:bg-black  transition-property: background-color, duration-500 ease-in delay-100">
 
       {/* navigation  */}
       <div className='max-w-5xl w-full'>
@@ -374,23 +374,25 @@ export default function Home() {
   function handleLightTheme() {
     // @todo this to custom hook
 
-    // localStorage.theme = 'light'
-    // document.documentElement.classList.remove('dark')
+    localStorage.theme = 'light'
+    document.documentElement.classList.remove('dark')
   }
 
   function handleDarkTheme() {
+    // @todo this to custom hook
 
-    // localStorage.theme = 'dark'
-    // document.documentElement.classList.add('dark')
+    localStorage.theme = 'dark'
+    document.documentElement.classList.add('dark')
   }
 
   function handleSystemTheme() {
+    // @todo this to custom hook
 
-    // localStorage.removeItem('theme')
-    // if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    //   document.documentElement.classList.add('dark')
-    // } else {
-    //   document.documentElement.classList.remove('dark')
-    // }
+    localStorage.removeItem('theme')
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
   }
 }
