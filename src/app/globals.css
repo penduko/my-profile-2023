@@ -25,3 +25,16 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* 
+main background
+bg-stone-300 dark:bg-stone-900
+
+components background (eg. button, dropdown)
+bg-stone-200 dark:bg-stone-950
+
+text color
+text-stone-700 dark:text-stone-300
+
+divider
+divide-stone-300 dark:divide-stone-600 */
